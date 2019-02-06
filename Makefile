@@ -17,7 +17,7 @@ generate_all:	\
 	generate_standalone_nodejs \
 	generate_standalone_nodejs_debug
 
-build: all
+build: base
 
 ci: build test
 
