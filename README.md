@@ -19,13 +19,13 @@ Images included:
 
 NodeJS
 ``` bash
-$ docker run -d -p 8080:8080 jpavlic/standalone-nodejs:3.141.59-gold
+$ docker run -d -p 8080:8080 jpavlic/standalone-nodejs:1.001.01-gold
 ```
 
 ### Standalone NodeJS
 
 ``` bash
-$ docker run -d -p 8080:8080 jpavlic/standalone-nodeJS:3.141.59-gold
+$ docker run -d -p 8080:8080 jpavlic/standalone-nodeJS:1.001.01-gold
 ```
 
 _Note: Only one NodeJS image can run on port_ `8080` _at a time._
@@ -64,27 +64,27 @@ _Note: Omitting_ `VERSION=local` _will build the images with the current version
 
 In the event you wish to visually see what the browser is doing you will want to run the `debug` variant of node or standalone images. A VNC server will run on port 5900. You are free to map that to any free external port that you wish. Keep in mind that you will only be able to run one node per port so if you wish to include a second node, or more, you will have to use different ports, the 5900 as the internal port will have to remain the same though as thats the VNC service on the node. The second example below shows how to run multiple nodes and with different VNC ports open:
 ``` bash
-$ docker run -d -P -p <port4VNC>:5900 --link selenium-hub:hub -v /dev/shm:/dev/shm selenium/node-chrome-debug:3.141.59-gold
-$ docker run -d -P -p <port4VNC>:5900 --link selenium-hub:hub -v /dev/shm:/dev/shm selenium/node-firefox-debug:3.141.59-gold
+$ docker run -d -P -p <port4VNC>:5900 --link selenium-hub:hub -v /dev/shm:/dev/shm selenium/node-chrome-debug:1.001.01-gold
+$ docker run -d -P -p <port4VNC>:5900 --link selenium-hub:hub -v /dev/shm:/dev/shm selenium/node-firefox-debug:1.001.01-gold
 ```
 e.g.:
 ``` bash
-$ docker run -d -P -p 5900:5900 --link selenium-hub:hub -v /dev/shm:/dev/shm selenium/node-chrome-debug:3.141.59-gold
-$ docker run -d -P -p 5901:5900 --link selenium-hub:hub -v /dev/shm:/dev/shm selenium/node-firefox-debug:3.141.59-gold
+$ docker run -d -P -p 5900:5900 --link selenium-hub:hub -v /dev/shm:/dev/shm selenium/node-chrome-debug:1.001.01-gold
+$ docker run -d -P -p 5901:5900 --link selenium-hub:hub -v /dev/shm:/dev/shm selenium/node-firefox-debug:1.001.01-gold
 ```
 to connect to the Chrome node on 5900 and the Firefox node on 5901 (assuming those node are free, and reachable).
 
 And for standalone:
 ``` bash
-$ docker run -d -p 4444:4444 -p <port4VNC>:5900 -v /dev/shm:/dev/shm selenium/standalone-chrome-debug:3.141.59-gold
+$ docker run -d -p 4444:4444 -p <port4VNC>:5900 -v /dev/shm:/dev/shm selenium/standalone-chrome-debug:1.001.01-gold
 # OR
-$ docker run -d -p 4444:4444 -p <port4VNC>:5900 -v /dev/shm:/dev/shm selenium/standalone-firefox-debug:3.141.59-gold
+$ docker run -d -p 4444:4444 -p <port4VNC>:5900 -v /dev/shm:/dev/shm selenium/standalone-firefox-debug:1.001.01-gold
 ```
 or
 ``` bash
-$ docker run -d -p 4444:4444 -p 5900:5900 -v /dev/shm:/dev/shm selenium/standalone-chrome-debug:3.141.59-gold
+$ docker run -d -p 4444:4444 -p 5900:5900 -v /dev/shm:/dev/shm selenium/standalone-chrome-debug:1.001.01-gold
 # OR
-$ docker run -d -p 4444:4444 -p 5901:5900 -v /dev/shm:/dev/shm selenium/standalone-firefox-debug:3.141.59-gold
+$ docker run -d -p 4444:4444 -p 5901:5900 -v /dev/shm:/dev/shm selenium/standalone-firefox-debug:1.001.01-gold
 ```
 
 You can acquire the port that the VNC server is exposed to by running:
@@ -103,8 +103,8 @@ If you are running [Boot2Docker](https://docs.docker.com/installation/mac/) on O
 
 When you are prompted for the password it is `secret`. If you wish to change this then you should either change it in the `/NodeBase/Dockerfile` and build the images yourself, or you can define a Docker image that derives from the posted ones which reconfigures it:
 ``` dockerfile
-#FROM selenium/node-chrome-debug:3.141.59-gold
-#FROM selenium/node-firefox-debug:3.141.59-gold
+#FROM selenium/node-chrome-debug:1.001.01-gold
+#FROM selenium/node-firefox-debug:1.001.01-gold
 #Choose the FROM statement that works for you.
 
 RUN x11vnc -storepasswd <your-password-here> /home/nodejsuser/.vnc/passwd
