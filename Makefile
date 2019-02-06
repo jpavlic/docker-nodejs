@@ -19,7 +19,7 @@ generate_all:	\
 
 build: base
 
-ci: build test
+ci: build
 
 base:
 	cd ./Base && docker build $(BUILD_ARGS) -t $(NAME)/base:$(VERSION) .
