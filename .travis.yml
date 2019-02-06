@@ -21,5 +21,5 @@ jobs:
       script:
       - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
       - VERSION="${TRAVIS_TAG}" make build_nodejs
-      - VERSION="${TRAVIS_TAG}" make release_nodejs
+      - VERSION="${TRAVIS_TAG}" make release_nodejs_latest
       - VERSION="${TRAVIS_TAG}" make tag_nodejs_latest
