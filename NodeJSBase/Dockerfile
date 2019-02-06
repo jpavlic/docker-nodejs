@@ -3,7 +3,7 @@
 # PLEASE UPDATE Dockerfile.txt INSTEAD OF THIS FILE
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 FROM jpavlic/base:1.001.01-gold
-LABEL authors=NodeJS
+LABEL authors=jpavlic
 
 USER root
 
