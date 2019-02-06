@@ -1,5 +1,5 @@
 NAME := $(or $(NAME),$(NAME),jpavlic)
-VERSION := $(or $(VERSION),$(VERSION),latest)
+VERSION := $(or $(VERSION),$(VERSION),1.001.01-gold)
 NAMESPACE := $(or $(NAMESPACE),$(NAMESPACE),$(NAME))
 AUTHORS := $(or $(AUTHORS),$(AUTHORS),jpavlic)
 PLATFORM := $(shell uname -s)
@@ -17,7 +17,7 @@ generate_all:	\
 	generate_standalone_nodejs \
 	generate_standalone_nodejs_debug
 
-build: base
+build: nodejs
 
 ci: build
 
