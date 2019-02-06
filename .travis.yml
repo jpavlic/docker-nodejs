@@ -15,11 +15,11 @@ jobs:
     - env: step=build_and_test_random_user
       script:
       - docker info
+      - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
       - USE_RANDOM_USER_ID=false VERSION="$TRAVIS_BRANCH" make ci
     - stage: Release
       if: type != pull_request AND tag IS present
       script:
-      - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
       - VERSION="${TRAVIS_TAG}" make build
       - VERSION="${TRAVIS_TAG}" make release
       - VERSION="${TRAVIS_TAG}" make tag_latest
