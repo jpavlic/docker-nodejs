@@ -14,8 +14,6 @@ echo LABEL authors="$AUTHORS" >> ${FOLDER}/Dockerfile
 echo "" >> ${FOLDER}/Dockerfile
 cat ./Dockerfile.txt >> ${FOLDER}/Dockerfile
 
-cp ./start-nodejs-standalone.sh ${FOLDER}
-
 cat ./README.template.md \
   | sed "s/##BASE##/$BASE/" \
   | sed "s/##FOLDER##/$1/" > ${FOLDER}/README.md
