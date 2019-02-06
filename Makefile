@@ -1,5 +1,5 @@
 NAME := $(or $(NAME),$(NAME),jpavlic)
-VERSION := $(or $(VERSION),$(VERSION),1.001.01-gold)
+VERSION := $(or $(VERSION),$(VERSION),latest)
 NAMESPACE := $(or $(NAMESPACE),$(NAMESPACE),$(NAME))
 AUTHORS := $(or $(AUTHORS),$(AUTHORS),jpavlic)
 PLATFORM := $(shell uname -s)

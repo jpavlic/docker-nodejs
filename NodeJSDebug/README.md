@@ -25,7 +25,7 @@ If you are running Boot2Docker on Mac then you already have a [VNC client](http:
 When you are prompted for the password it is __secret__. If you wish to change this then you should either change it in the `/NodeBase/Dockerfile` and build the images yourself, or you can define a docker image that derives from the posted ones which reconfigures it:
 
 ``` dockerfile
-FROM selenium/nodejs-debug:1.001.01-gold
+FROM selenium/nodejs-debug:latest
 
 RUN x11vnc -storepasswd <your-password-here> /home/nodejsuser/.vnc/passwd
 ```
