@@ -19,6 +19,8 @@ generate_all:	\
 
 build: all
 
+build_nodejs: nodejs
+
 ci: build
 
 base:
@@ -62,6 +64,11 @@ tag_latest:
 	docker tag $(NAME)/standalone-nodejs:$(VERSION) $(NAME)/standalone-nodejs:latest
 	docker tag $(NAME)/standalone-nodejs-debug:$(VERSION) $(NAME)/standalone-nodejs-debug:latest
 
+tag_nodejs_latest:
+	docker tag $(NAME)/base:$(VERSION) $(NAME)/base:latest
+	docker tag $(NAME)/nodejs-base:$(VERSION) $(NAME)/nodejs-base:latest
+	docker tag $(NAME)/nodejs:$(VERSION) $(NAME)/nodejs:latest
+
 release_latest:
 	docker push $(NAME)/base:latest
 	docker push $(NAME)/nodejs-base:latest
@@ -69,6 +76,11 @@ release_latest:
 	docker push $(NAME)/nodejs-debug:latest
 	docker push $(NAME)/standalone-nodejs:latest
 	docker push $(NAME)/standalone-nodejs-debug:latest
+
+release_nodejs_latest:
+	docker push $(NAME)/base:latest
+	docker push $(NAME)/nodejs-base:latest
+	docker push $(NAME)/nodejs:latest
 
 tag_major_minor:
 	docker tag $(NAME)/base:$(VERSION) $(NAME)/base:$(MAJOR)
@@ -92,11 +104,11 @@ tag_major_minor:
 
 release: tag_major_minor
 	@if ! docker images $(NAME)/base | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)/base version $(VERSION) is not yet built. Please run 'make build'"; false; fi
-	@if ! docker images $(NAME)/node-base | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)/nodejs-base version $(VERSION) is not yet built. Please run 'make build'"; false; fi
-	@if ! docker images $(NAME)/node-chrome | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)/nodejs version $(VERSION) is not yet built. Please run 'make build'"; false; fi
-	@if ! docker images $(NAME)/node-chrome-debug | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)/nodejs-debug version $(VERSION) is not yet built. Please run 'make build'"; false; fi
-	@if ! docker images $(NAME)/standalone-chrome | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)/standalone-nodejs version $(VERSION) is not yet built. Please run 'make build'"; false; fi
-	@if ! docker images $(NAME)/standalone-chrome-debug | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)/standalone-nodejs-debug version $(VERSION) is not yet built. Please run 'make build'"; false; fi
+	@if ! docker images $(NAME)/nodejs-base | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)/nodejs-base version $(VERSION) is not yet built. Please run 'make build'"; false; fi
+	@if ! docker images $(NAME)/nodejs | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)/nodejs version $(VERSION) is not yet built. Please run 'make build'"; false; fi
+	@if ! docker images $(NAME)/nodejs-debug | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)/nodejs-debug version $(VERSION) is not yet built. Please run 'make build'"; false; fi
+	@if ! docker images $(NAME)/standalone-nodejs | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)/standalone-nodejs version $(VERSION) is not yet built. Please run 'make build'"; false; fi
+	@if ! docker images $(NAME)/standalone-nodejs-debug | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)/standalone-nodejs-debug version $(VERSION) is not yet built. Please run 'make build'"; false; fi
 	docker push $(NAME)/base:$(VERSION)
 	docker push $(NAME)/nodejs-base:$(VERSION)
 	docker push $(NAME)/nodejs:$(VERSION)
