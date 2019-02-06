@@ -17,9 +17,9 @@ generate_all:	\
 	generate_standalone_nodejs \
 	generate_standalone_nodejs_debug
 
-build: nodejs
+build: all
 
-ci: build
+ci: build tag_latest release_latest
 
 base:
 	cd ./Base && docker build $(BUILD_ARGS) -t $(NAME)/base:$(VERSION) .
