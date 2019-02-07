@@ -27,8 +27,8 @@ RUN apt-get update -qqy \
 USER nodejsuser
 
 #==============================
-# Generating the VNC password as nodejsuser
-# So the service can be started with nodejsuser
+# Generating the VNC password as seluser
+# So the service can be started with seluser
 #==============================
 
 RUN mkdir -p ${HOME}/.vnc \
@@ -44,14 +44,13 @@ RUN sudo chmod -R 777 ${HOME} \
 #==============================
 # Scripts to run fluxbox and x11vnc
 #==============================
-COPY start-vnc.sh \
+COPY start-fluxbox.sh \
+      start-vnc.sh \
       /opt/bin/
 
 #==============================
 # Supervisor configuration file
 #==============================
-COPY selenium-debug.conf /etc/supervisor/conf.d/
+COPY nodejs-debug.conf /etc/supervisor/conf.d/
 
-EXPOSE 8080
-EXPOSE 80
 EXPOSE 5900

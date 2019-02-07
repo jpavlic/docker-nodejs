@@ -6,6 +6,3 @@ FROM jpavlic/nodejs:latest
 LABEL authors=jpavlic
 
 USER nodejsuser
-
-EXPOSE 8080
-EXPOSE 80

@@ -13,8 +13,6 @@ echo FROM ${NAMESPACE}/${BASE}:${VERSION} >> ${FOLDER}/Dockerfile
 echo LABEL authors="$AUTHORS" >> ${FOLDER}/Dockerfile
 echo "" >> ${FOLDER}/Dockerfile
 cat ../Standalone/Dockerfile.txt >> ${FOLDER}/Dockerfile
-echo EXPOSE 8080 >> ${FOLDER}/Dockerfile
-echo EXPOSE 80 >> ${FOLDER}/Dockerfile
 echo EXPOSE 5900 >> ${FOLDER}/Dockerfile
 
 cat ./README.template.md \
