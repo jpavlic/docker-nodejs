@@ -57,7 +57,7 @@ ENV HOME=/home/nodejsuser
 RUN  mkdir -p /opt/bin
 
 #======================================
-# Add Grid check script
+# Add entry point script
 #======================================
 COPY entry_point.sh /opt/bin/
 
