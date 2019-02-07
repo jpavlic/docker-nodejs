@@ -50,7 +50,7 @@ generate_standalone_nodejs_debug:
 standalone_nodejs_debug: nodejs_debug generate_standalone_nodejs_debug
 	cd ./StandaloneNodeJSDebug && docker build $(BUILD_ARGS) -t $(NAME)/standalone-nodejs-debug:$(VERSION) .
 
-nodejs_debug: generate_nodejs_debug nodejs
+nodejs_debug: nodejs generate_nodejs_debug
 	cd ./NodeJSDebug && docker build $(BUILD_ARGS) -t $(NAME)/nodejs-debug:$(VERSION) .
 
 generate_nodejs_debug:
