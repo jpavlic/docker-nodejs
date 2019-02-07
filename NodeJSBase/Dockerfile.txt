@@ -69,6 +69,12 @@ RUN apt-get -qqy update \
 
 USER nodejsuser
 
+#==============================
+# Scripts to run Selenium Node and XVFB
+#==============================
+COPY start-xvfb.sh \
+      /opt/bin/
+
 #============================
 # Some configuration options
 #============================
