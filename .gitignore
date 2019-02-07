@@ -9,7 +9,6 @@ node_modules/
 
 # Ignoring generated files during the build process
 Node*Debug/nodejs-debug.conf
-Node*Debug/start-*.sh
 
 # Created by https://www.gitignore.io/api/virtualenv
 
