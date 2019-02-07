@@ -19,9 +19,7 @@ generate_all:	\
 
 build: all
 
-build_nodejs: nodejs
-
-ci: standalone_nodejs_debug release_standalone_nodejs_debug
+ci: build release_all
 
 base:
 	cd ./Base && docker build $(BUILD_ARGS) -t $(NAME)/base:$(VERSION) .
@@ -102,6 +100,13 @@ tag_standalone_nodejs_debug:
 release_standalone_nodejs_debug:
 	docker push $(NAME)/base:$(VERSION)
 	docker push $(NAME)/nodejs-base:$(VERSION)
+	docker push $(NAME)/standalone-nodejs-debug:$(VERSION)
+
+release_all:
+	docker push $(NAME)/base:$(VERSION)
+	docker push $(NAME)/nodejs-base:$(VERSION)
+	docker push $(NAME)/nodejs-debug:$(VERSION)
+	docker push $(NAME)/standalone-nodejs:$(VERSION)
 	docker push $(NAME)/standalone-nodejs-debug:$(VERSION)
 
 tag_major_minor:
