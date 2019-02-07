@@ -7,9 +7,6 @@ node_modules/
 # Vim swap files.
 *.swp
 
-# Ignoring generated files during the build process
-Node*Debug/nodejs-debug.conf
-
 # Created by https://www.gitignore.io/api/virtualenv
 
 ### VirtualEnv ###
