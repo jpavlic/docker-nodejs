@@ -54,7 +54,7 @@ ENV HOME=/home/nodejsuser
 #=======================================
 # Create shared / common bin directory
 #=======================================
-RUN  mkdir -p /opt/bin
+RUN mkdir -p /opt/bin
 
 #======================================
 # Add entry point script
@@ -70,6 +70,5 @@ COPY supervisord.conf /etc
 # Run the following commands as non-privileged user
 #===================================================
 USER nodejsuser
-
 
 CMD ["/opt/bin/entry_point.sh"]
