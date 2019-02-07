@@ -54,10 +54,10 @@ ENV HOME=/home/nodejsuser
 #=======================================
 # Create shared / common bin directory
 #=======================================
-RUN mkdir -p /opt/bin
+RUN  mkdir -p /opt/bin
 
 #======================================
-# Add entry point script
+# Add Grid check script
 #======================================
 COPY entry_point.sh /opt/bin/
 
@@ -66,9 +66,18 @@ COPY entry_point.sh /opt/bin/
 #======================================
 COPY supervisord.conf /etc
 
+#==========
+# Relaxing permissions for OpenShift and other non-sudo environments
+#==========
+RUN  mkdir -p /var/run/supervisor /var/log/supervisor \
+  && chmod -R 777 /var/run/supervisor /var/log/supervisor /etc/passwd \
+  && chgrp -R 0 ${HOME} /var/run/supervisor /var/log/supervisor \
+  && chmod -R g=u ${HOME} /var/run/supervisor /var/log/supervisor
+
 #===================================================
 # Run the following commands as non-privileged user
 #===================================================
 USER nodejsuser
+
 
 CMD ["/opt/bin/entry_point.sh"]
