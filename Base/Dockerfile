@@ -57,6 +57,11 @@ ENV HOME=/home/nodejsuser
 RUN  mkdir -p /opt/bin
 
 #======================================
+# Add Grid check script
+#======================================
+COPY entry_point.sh /opt/bin/
+
+#======================================
 # Add Supervisor configuration file
 #======================================
 COPY supervisord.conf /etc
