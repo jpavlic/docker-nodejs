@@ -21,7 +21,7 @@ build: all
 
 build_nodejs: nodejs
 
-ci: build_nodejs tag_nodejs release_nodejs
+ci: build release
 
 base:
 	cd ./Base && docker build $(BUILD_ARGS) -t $(NAME)/base:$(VERSION) .
@@ -68,14 +68,6 @@ tag_nodejs:
 	docker tag $(NAME)/base:$(VERSION) $(NAME)/base:$(VERSION)
 	docker tag $(NAME)/nodejs-base:$(VERSION) $(NAME)/nodejs-base:$(VERSION)
 	docker tag $(NAME)/nodejs:$(VERSION) $(NAME)/nodejs:$(VERSION)
-
-release_latest:
-	docker push $(NAME)/base:latest
-	docker push $(NAME)/nodejs-base:latest
-	docker push $(NAME)/nodejs:latest
-	docker push $(NAME)/nodejs-debug:latest
-	docker push $(NAME)/standalone-nodejs:latest
-	docker push $(NAME)/standalone-nodejs-debug:latest
 
 release_nodejs:
 	docker push $(NAME)/base:$(VERSION)
