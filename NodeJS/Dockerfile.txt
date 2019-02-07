@@ -29,4 +29,11 @@ RUN nodemon -v
 # Cleanup
 RUN apt-get update && apt-get upgrade -y && apt-get autoremove -y
 
+#==========
+# Relaxing permissions for OpenShift and other non-sudo environments
+#==========
+RUN sudo chmod -R 777 ${HOME} \
+  && sudo chgrp -R 0 ${HOME} \
+  && sudo chmod -R g=u ${HOME}
+
 USER nodejsuser
