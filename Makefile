@@ -21,7 +21,7 @@ build: all
 
 build_nodejs: nodejs
 
-ci: standalone_nodejs_debug release_standalone_nodejs
+ci: nodejs release_nodejs
 
 base:
 	cd ./Base && docker build $(BUILD_ARGS) -t $(NAME)/base:$(VERSION) .
