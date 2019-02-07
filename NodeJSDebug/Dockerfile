@@ -27,8 +27,8 @@ RUN apt-get update -qqy \
 USER nodejsuser
 
 #==============================
-# Generating the VNC password as seluser
-# So the service can be started with seluser
+# Generating the VNC password as nodejsuser
+# So the service can be started with nodejsuser
 #==============================
 
 RUN mkdir -p ${HOME}/.vnc \
