@@ -48,11 +48,12 @@ generate_standalone_nodejs_debug:
 standalone_nodejs_debug: nodejs_debug generate_standalone_nodejs_debug
 	cd ./StandaloneNodeJSDebug && docker build $(BUILD_ARGS) -t $(NAME)/standalone-nodejs-debug:$(VERSION) .
 
+generate_nodejs_debug:
+	cd ./NodeJSBaseDebug && ./generate.sh NodeJSDebug nodejs $(VERSION) $(NAMESPACE) $(AUTHORS)
+
 nodejs_debug: generate_nodejs_debug nodejs
 	cd ./NodeJSDebug && docker build $(BUILD_ARGS) -t $(NAME)/nodejs-debug:$(VERSION) .
 
-generate_nodejs_debug:
-	cd ./NodeJSBaseDebug && ./generate.sh NodeJSDebug nodejs $(VERSION) $(NAMESPACE) $(AUTHORS)
 
 tag_latest:
 	docker tag $(NAME)/base:$(VERSION) $(NAME)/base:latest
