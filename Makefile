@@ -43,7 +43,7 @@ standalone_nodejs: nodejs generate_standalone_nodejs
 	cd ./StandaloneNodeJS && docker build $(BUILD_ARGS) -t $(NAME)/standalone-nodejs:$(VERSION) .
 
 generate_standalone_nodejs_debug:
-	cd ./StandaloneNodeJS && ./generate.sh StandaloneNodeJSDebug nodejs-debug $(VERSION) $(NAMESPACE) $(AUTHORS)
+	cd ./StandaloneDebug && ./generate.sh StandaloneNodeJSDebug nodejs-debug $(VERSION) $(NAMESPACE) $(AUTHORS)
 
 standalone_nodejs_debug: nodejs_debug generate_standalone_nodejs_debug
 	cd ./StandaloneNodeJSDebug && docker build $(BUILD_ARGS) -t $(NAME)/standalone-nodejs-debug:$(VERSION) .
