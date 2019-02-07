@@ -21,3 +21,4 @@ cat ./README.template.md \
 cp ./README-short.txt ${FOLDER}/README-short.txt
 cp ./start-fluxbox.sh ${FOLDER}/start-fluxbox.sh
 cp ./start-vnc.sh ${FOLDER}/start-vnc.sh
+cp ./nodejs-debug.conf ${FOLDER}/nodejs-debug.conf
